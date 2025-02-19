@@ -1,3 +1,4 @@
+write-host "$triggerlist"
  $triggerNames = $triggerlist
        
       # Retrieve all triggers from the specified Synapse workspace
