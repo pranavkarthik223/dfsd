@@ -27,6 +27,8 @@ steps:
     ScriptType: 'FilePath'
     ScriptPath: 'starttriggers.ps1'
     azurePowerShellVersion: 'LatestVersion'
+  env:
+    $triggerlist : $(triggerlist)
   displayName: 'stop Synapse triggers'
 
 - task: AzurePowerShell@5
