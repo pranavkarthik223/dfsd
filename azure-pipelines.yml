@@ -62,7 +62,7 @@ steps:
           if ($trigger) {
       		write-host "$trigger.Name"
               Start-AzSynapseTrigger -WorkspaceName "apk" -Name $trigger.Name
-              Write-Host "Stopped trigger: $($trigger.Name)"
+              Write-Host "Started trigger: $($trigger.Name)"
           } else {
               Write-Host "Trigger '$($_)' not found in the workspace."
           }
