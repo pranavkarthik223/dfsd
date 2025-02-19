@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: windows-latest
 
+variables:
+  - group: 'testgroup'
+
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
@@ -23,7 +26,8 @@ steps:
     azureSubscription: 'ARM-WIF-Automatic-APK'
     ScriptType: 'InlineScript'
     Inline: |
-      $triggerNames = @("Trigger 1","Trigger 2")
+      write-host "$(triggerlist)"
+      $triggerNames = $(triggerlist)
        
       # Retrieve all triggers from the specified Synapse workspace
       $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
