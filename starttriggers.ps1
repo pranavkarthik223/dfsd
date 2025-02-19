@@ -1,5 +1,5 @@
- write-host "$(triggerList)"
- $triggerNames = $(triggerList)
+write-host "$env:triggerList"
+ $triggerNames = $env:triggerList
        
       # Retrieve all triggers from the specified Synapse workspace
       $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
