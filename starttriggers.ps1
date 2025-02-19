@@ -1,11 +1,8 @@
-write-host "$env:triggerList"
-$triggerNames = "$env:triggerList"
-       
       # Retrieve all triggers from the specified Synapse workspace
       $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
        
       # Loop through the list of trigger names and stop each one
-      $triggerNames | ForEach-Object {
+      $env:triggerList | ForEach-Object {
           $triggerName = $_  # The current trigger name in the loop
           $trigger = $triggersSynapse | Where-Object { $_.Name -eq $triggerName }
       
