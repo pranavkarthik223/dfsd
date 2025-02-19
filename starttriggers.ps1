@@ -1,4 +1,4 @@
- $triggerNames = $(triggerlist)
+ $triggerNames = $triggerlist
        
       # Retrieve all triggers from the specified Synapse workspace
       $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
