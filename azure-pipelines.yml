@@ -43,7 +43,6 @@ steps:
       }
     azurePowerShellVersion: 'LatestVersion'
   displayName: 'stop Synapse triggers'
-  enabled: false
 
 - task: AzurePowerShell@5
   inputs:
@@ -70,4 +69,3 @@ steps:
       }
     azurePowerShellVersion: 'LatestVersion'
   displayName: 'start Synapse triggers'
-  enabled: false
