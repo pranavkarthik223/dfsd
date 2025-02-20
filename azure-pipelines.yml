@@ -28,24 +28,20 @@ steps:
     azureSubscription: 'ARM-WIF-Automatic-APK'
     ScriptType: 'InlineScript'
     Inline: |
-      $triggerNames = @("Trigger 1","Trigger 2")
-             
-            # Retrieve all triggers from the specified Synapse workspace
-            $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
-             
-            # Loop through the list of trigger names and stop each one
-            $triggerNames | ForEach-Object {
-                $triggerName = $_  # The current trigger name in the loop
-                $trigger = $triggersSynapse | Where-Object { $_.Name -eq $triggerName }
-            
-                if ($trigger) {
-            		write-host "$trigger.Name"
-                    Start-AzSynapseTrigger -WorkspaceName "apk" -Name $trigger.Name
-                    Write-Host "Started trigger: $($trigger.Name)"
-                } else {
-                    Write-Host "Trigger '$($_)' not found in the workspace."
-                }
-            }
+      $triggerNames = @("Trigger1")
+      # Retrieve all triggers from the specified Synapse workspace
+      $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
+      # Loop through the list of trigger names and start each one
+      $triggerNames | ForEach-Object {
+          $triggerName = $_  # The current trigger name in the loop
+          $trigger = $triggersSynapse | Where-Object { $_.Name -eq $triggerName }
+          if ($trigger) {
+              Stop-AzSynapseTrigger -WorkspaceName "apk"  -Name $trigger.Name
+              Write-Host "Started trigger: $($trigger.Name)"
+          } else {
+              Write-Host "Trigger '$($_)' not found in the workspace."
+          }
+      }
     azurePowerShellVersion: 'LatestVersion'
   displayName: 'stop Synapse triggers'
 
@@ -54,23 +50,19 @@ steps:
     azureSubscription: 'ARM-WIF-Automatic-APK'
     ScriptType: 'InlineScript'
     Inline: |
-      $triggerNames = @("Trigger 1","Trigger 2")
-       
-      # Retrieve all triggers from the specified Synapse workspace
-      $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
-       
-      # Loop through the list of trigger names and stop each one
-      $triggerNames | ForEach-Object {
-          $triggerName = $_  # The current trigger name in the loop
-          $trigger = $triggersSynapse | Where-Object { $_.Name -eq $triggerName }
-      
-          if ($trigger) {
-      		write-host "$trigger.Name"
-              Start-AzSynapseTrigger -WorkspaceName "apk" -Name $trigger.Name
-              Write-Host "Started trigger: $($trigger.Name)"
-          } else {
-              Write-Host "Trigger '$($_)' not found in the workspace."
-          }
-      }
+      $triggerNames = @("Trigger1")
+            # Retrieve all triggers from the specified Synapse workspace
+            $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
+            # Loop through the list of trigger names and start each one
+            $triggerNames | ForEach-Object {
+                $triggerName = $_  # The current trigger name in the loop
+                $trigger = $triggersSynapse | Where-Object { $_.Name -eq $triggerName }
+                if ($trigger) {
+                    Start-AzSynapseTrigger -WorkspaceName "apk"  -Name $trigger.Name
+                    Write-Host "Started trigger: $($trigger.Name)"
+                } else {
+                    Write-Host "Trigger '$($_)' not found in the workspace."
+                }
+            }
     azurePowerShellVersion: 'LatestVersion'
   displayName: 'start Synapse triggers'
