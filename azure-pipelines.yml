@@ -42,7 +42,7 @@ steps:
               Write-Host "Trigger '$($_)' not found in the workspace."
           }
       }
-    azurePowerShellVersion: 'LatestVersion'
+    preferredAzurePowerShellVersion: '9.4.0'
   displayName: 'stop Synapse triggers'
 
 - task: AzurePowerShell@5
