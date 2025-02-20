@@ -28,7 +28,7 @@ steps:
     azureSubscription: 'ARM-WIF-Automatic-APK'
     ScriptType: 'InlineScript'
     Inline: |
-      $triggerNames = @("Trigger1")
+      $triggerNames = @("Trigger 1")
       # Retrieve all triggers from the specified Synapse workspace
       $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
       # Loop through the list of trigger names and start each one
@@ -42,6 +42,7 @@ steps:
               Write-Host "Trigger '$($_)' not found in the workspace."
           }
       }
+    FailOnStandardError: true
     preferredAzurePowerShellVersion: '9.4.0'
   displayName: 'stop Synapse triggers'
 
@@ -50,7 +51,7 @@ steps:
     azureSubscription: 'ARM-WIF-Automatic-APK'
     ScriptType: 'InlineScript'
     Inline: |
-      $triggerNames = @("Trigger1")
+      $triggerNames = @("Trigger 1")
             # Retrieve all triggers from the specified Synapse workspace
             $triggersSynapse = Get-AzSynapseTrigger -WorkspaceName "apk"
             # Loop through the list of trigger names and start each one
