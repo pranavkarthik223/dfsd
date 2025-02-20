@@ -43,7 +43,7 @@ steps:
           }
       }
     FailOnStandardError: true
-    preferredAzurePowerShellVersion: '9.4.0'
+    azurePowerShellVersion: 'LatestVersion'
   displayName: 'stop Synapse triggers'
 
 - task: AzurePowerShell@5
